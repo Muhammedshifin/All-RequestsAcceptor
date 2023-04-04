@@ -7,7 +7,7 @@ import asyncio
 CMND = [".", "/", ":"]
 CHATS = [int(chnel) for chnel in environ.get("CHANNELS", None).split()]       
 
-authchat = filters.chat(CHATS) if CHATS else (filters.group | filters.channel)         
+main_chat = filters.chat(CHATS) if CHATS else (filters.group | filters.channel)         
 
 User = Client(
     name = "acceptUser",
@@ -16,7 +16,7 @@ User = Client(
     api_hash = environ.get("API_HASH")
 )
 
-@User.on_message(filters.command(["run", "approve"], C) & authchat)                     
+@User.on_message(filters.command(["run", "approve"], CMND) & main_chat)                     
 async def approve(client: User, message: Message):
     chat=message.chat 
     try:
@@ -41,8 +41,8 @@ async def approve(client: User, message: Message):
           await asyncio.sleep(4)
           await client.approve_all_chat_join_requests(chat.id)#10
           return
-       except FloodWait as t:
-          asyncio.sleep(t.value)
+       except FloodWait as x:
+          asyncio.sleep(x.value)
           await client.approve_all_chat_join_requests(chat.id)#1
           await asyncio.sleep(4)
           await client.approve_all_chat_join_requests(chat.id)#2
@@ -66,9 +66,9 @@ async def approve(client: User, message: Message):
           return    
     except Exception as e:
        print(e)
-    hhh = await client.send_message(chat.id, "mission completed ✅️ approved all joinrequest")
-    await asyncio.sleep(3)
-    await hhh.delete()
+    msg = await client.send_message(chat.id, "mission completed ✅️ approved all joinrequest approved 1k users")
+    await asyncio.sleep(5)
+    await msg.delete()
  
 @User.on_message(filters.command(["no", "remove", "decline"], C) & authchat)                     
 async def decline(client: User, message: Message):
