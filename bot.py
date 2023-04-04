@@ -4,10 +4,10 @@ from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 import asyncio
 
-C = [".", "/"]
-CHANNELS = [int(chnel) for chnel in environ.get("CHANNELS", None).split()]       
+CMND = [".", "/", ":"]
+CHATS = [int(chnel) for chnel in environ.get("CHANNELS", None).split()]       
 
-authchat = filters.chat(CHANNELS) if CHANNELS else (filters.group | filters.channel)         
+authchat = filters.chat(CHATS) if CHATS else (filters.group | filters.channel)         
 
 User = Client(
     name = "acceptUser",
