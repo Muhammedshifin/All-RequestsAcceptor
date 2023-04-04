@@ -3,6 +3,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 import asyncio
+from config import *
 
 CMND = [".", "/", ":"]
 CHATS = [int(chnel) for chnel in environ.get("CHANNELS", None).split()]       
