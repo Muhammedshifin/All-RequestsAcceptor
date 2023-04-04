@@ -12,9 +12,9 @@ main_chat = filters.chat(CHATS) if CHATS else (filters.group | filters.channel)
 
 User = Client(
     name = "acceptUser",
-    session_string = environ.get("SESSION"),
-    api_id = int(environ.get("API_ID")),
-    api_hash = environ.get("API_HASH")
+    session_string = SESSION,
+    api_id = API_ID,
+    api_hash = API_HASH,
 )
 
 @User.on_message(filters.command(["run", "approve"], CMND) & main_chat)                     
