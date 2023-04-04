@@ -21,7 +21,25 @@ async def approve(client: User, message: Message):
     chat=message.chat 
     try:
        try:
-          await client.approve_all_chat_join_requests(chat.id)
+          await client.approve_all_chat_join_requests(chat.id)#1
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#2
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#3
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#4
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#5
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#6
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#7
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#8
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#9
+          await asyncio.sleep(4)
+          await client.approve_all_chat_join_requests(chat.id)#10
           return
        except FloodWait as t:
           asyncio.sleep(t.value)
