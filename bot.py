@@ -14,7 +14,7 @@ User = Client(
     name = "acceptUser",
     session_string = SESSION,
     api_id = API_ID,
-    api_hash = API_HASH,
+    api_hash = API_HASH
 )
 
 @User.on_message(filters.command(["run", "approve"], CMND) & main_chat)                     
